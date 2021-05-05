@@ -1,0 +1,391 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C91B5201EEAEEECC570817BF /* UIViewController+navInTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B562C42338169CE355093 /* UIViewController+navInTabBar.swift */; };
+		C91B524A9501AD7B30690C4B /* CGSize+constructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B5AA7DE335FC696D32F6F /* CGSize+constructor.swift */; };
+		C91B52CC45278A6EB57F6A89 /* UIView+layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B56FAF2CD78833227C860 /* UIView+layout.swift */; };
+		C91B5301F3F3BA054275CA7B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B5A7090BAB66A9BF375BF /* ContentView.swift */; };
+		C91B53AFF855FBD29619F661 /* GIStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B5700538C24D660E89E68 /* GIStack.swift */; };
+		C91B54524CF19EC30672C3EA /* UIImageView+constructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B5CB793F27ADEFB32A9DB /* UIImageView+constructor.swift */; };
+		C91B557ABF60AB35093FF2C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C91B524E75FE505B42CC8C1A /* Assets.xcassets */; };
+		C91B55DAA2A350B2D99AC0CB /* MapsDirectionsGooglePlacesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B5AD3B432D4D3F9A71081 /* MapsDirectionsGooglePlacesApp.swift */; };
+		C91B561AA250E24BD73CADAD /* UIStackView+padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B5AEB10F6FA9F27D0F53D /* UIStackView+padding.swift */; };
+		C91B57BA84AE09930D00BBFA /* UIButton+convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B570DF97B999235EB3F53 /* UIButton+convenience.swift */; };
+		C91B58ACE3B8623998BD5DDB /* UIView+layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B53E1F42DEE4C66510C06 /* UIView+layer.swift */; };
+		C91B59238CA95A19BA8A2978 /* GIListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B54FA1E63268FBB0EF972 /* GIListCell.swift */; };
+		C91B59F8E1E28B6B7B5D0A98 /* UIView+oneSideBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B5D5EBA167CD1EA2BD090 /* UIView+oneSideBorder.swift */; };
+		C91B5A617EC6C72E231366C2 /* UIEdgeInsets+constructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B5BE33E82649AD82CF3B4 /* UIEdgeInsets+constructor.swift */; };
+		C91B5AD887C3D9BEE7E20AE3 /* GIListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B5946C1AE2978B1CB3098 /* GIListController.swift */; };
+		C91B5C3AF51BCA78EE5E73EA /* CGRect+convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B51923087C049E498CF74 /* CGRect+convenience.swift */; };
+		C91B5D07FA70EBF5F8CE5595 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C91B5A1DFF872EF836A7CCD0 /* Preview Assets.xcassets */; };
+		C91B5D6E5003624050B15539 /* UIColor+constructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B5865331C60C2D4C58E81 /* UIColor+constructor.swift */; };
+		C91B5E62203359EFB0AEDBDB /* UILabel+constructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B52B04DE32B794A4C1C55 /* UILabel+constructor.swift */; };
+		C91B5F28CCA2039F6B77A15B /* UIButton+constructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B5572EFE693970C69B843 /* UIButton+constructor.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C91B51923087C049E498CF74 /* CGRect+convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+convenience.swift"; sourceTree = "<group>"; };
+		C91B524E75FE505B42CC8C1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C91B52B04DE32B794A4C1C55 /* UILabel+constructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+constructor.swift"; sourceTree = "<group>"; };
+		C91B53E1F42DEE4C66510C06 /* UIView+layer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+layer.swift"; sourceTree = "<group>"; };
+		C91B54BFA10DB2105480929B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		C91B54FA1E63268FBB0EF972 /* GIListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIListCell.swift; sourceTree = "<group>"; };
+		C91B5572EFE693970C69B843 /* UIButton+constructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+constructor.swift"; sourceTree = "<group>"; };
+		C91B562C42338169CE355093 /* UIViewController+navInTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+navInTabBar.swift"; sourceTree = "<group>"; };
+		C91B56FAF2CD78833227C860 /* UIView+layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+layout.swift"; sourceTree = "<group>"; };
+		C91B5700538C24D660E89E68 /* GIStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIStack.swift; sourceTree = "<group>"; };
+		C91B570DF97B999235EB3F53 /* UIButton+convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+convenience.swift"; sourceTree = "<group>"; };
+		C91B5865331C60C2D4C58E81 /* UIColor+constructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+constructor.swift"; sourceTree = "<group>"; };
+		C91B5946C1AE2978B1CB3098 /* GIListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIListController.swift; sourceTree = "<group>"; };
+		C91B5A1DFF872EF836A7CCD0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C91B5A7090BAB66A9BF375BF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C91B5AA7DE335FC696D32F6F /* CGSize+constructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGSize+constructor.swift"; sourceTree = "<group>"; };
+		C91B5AD3B432D4D3F9A71081 /* MapsDirectionsGooglePlacesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsDirectionsGooglePlacesApp.swift; sourceTree = "<group>"; };
+		C91B5AEB10F6FA9F27D0F53D /* UIStackView+padding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+padding.swift"; sourceTree = "<group>"; };
+		C91B5BE33E82649AD82CF3B4 /* UIEdgeInsets+constructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+constructor.swift"; sourceTree = "<group>"; };
+		C91B5CB793F27ADEFB32A9DB /* UIImageView+constructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+constructor.swift"; sourceTree = "<group>"; };
+		C91B5D5EBA167CD1EA2BD090 /* UIView+oneSideBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+oneSideBorder.swift"; sourceTree = "<group>"; };
+		C91B5D6604F43E4826793015 /* MapsDirectionsGooglePlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapsDirectionsGooglePlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C91B584D08F6EA932CCD9AD9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C91B52555561DD81E8292DD3 /* MapsDirectionsGooglePlaces */ = {
+			isa = PBXGroup;
+			children = (
+				C91B54BFA10DB2105480929B /* Info.plist */,
+				C91B524E75FE505B42CC8C1A /* Assets.xcassets */,
+				C91B531064386A80D2343145 /* Preview Content */,
+				C91B5AD3B432D4D3F9A71081 /* MapsDirectionsGooglePlacesApp.swift */,
+				C91B5A7090BAB66A9BF375BF /* ContentView.swift */,
+				C91B5D290EA239055EFC8E97 /* Utilities */,
+			);
+			path = MapsDirectionsGooglePlaces;
+			sourceTree = "<group>";
+		};
+		C91B531064386A80D2343145 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				C91B5A1DFF872EF836A7CCD0 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C91B54B2B9ACFCBFED68813D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C91B5D6604F43E4826793015 /* MapsDirectionsGooglePlaces.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C91B5D290EA239055EFC8E97 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C91B5700538C24D660E89E68 /* GIStack.swift */,
+				C91B54FA1E63268FBB0EF972 /* GIListCell.swift */,
+				C91B53E1F42DEE4C66510C06 /* UIView+layer.swift */,
+				C91B56FAF2CD78833227C860 /* UIView+layout.swift */,
+				C91B51923087C049E498CF74 /* CGRect+convenience.swift */,
+				C91B5AA7DE335FC696D32F6F /* CGSize+constructor.swift */,
+				C91B5865331C60C2D4C58E81 /* UIColor+constructor.swift */,
+				C91B52B04DE32B794A4C1C55 /* UILabel+constructor.swift */,
+				C91B5AEB10F6FA9F27D0F53D /* UIStackView+padding.swift */,
+				C91B5572EFE693970C69B843 /* UIButton+constructor.swift */,
+				C91B570DF97B999235EB3F53 /* UIButton+convenience.swift */,
+				C91B5D5EBA167CD1EA2BD090 /* UIView+oneSideBorder.swift */,
+				C91B5CB793F27ADEFB32A9DB /* UIImageView+constructor.swift */,
+				C91B5BE33E82649AD82CF3B4 /* UIEdgeInsets+constructor.swift */,
+				C91B562C42338169CE355093 /* UIViewController+navInTabBar.swift */,
+				C91B5946C1AE2978B1CB3098 /* GIListController.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		C91B5EE6C03D882E78E57FE0 = {
+			isa = PBXGroup;
+			children = (
+				C91B54B2B9ACFCBFED68813D /* Products */,
+				C91B52555561DD81E8292DD3 /* MapsDirectionsGooglePlaces */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C91B5F430A11F4F5D930D89C /* MapsDirectionsGooglePlaces */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C91B5334E0773FA8EF6C33F6 /* Build configuration list for PBXNativeTarget "MapsDirectionsGooglePlaces" */;
+			buildPhases = (
+				C91B55F743A27E60BED5CA0E /* Sources */,
+				C91B584D08F6EA932CCD9AD9 /* Frameworks */,
+				C91B50A781C26A15BB3C9419 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MapsDirectionsGooglePlaces;
+			productName = MapsDirectionsGooglePlaces;
+			productReference = C91B5D6604F43E4826793015 /* MapsDirectionsGooglePlaces.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C91B536ACA20FFDDE521D877 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = "";
+				ORGANIZATIONNAME = "";
+			};
+			buildConfigurationList = C91B563E7F5FD6B9754A4A24 /* Build configuration list for PBXProject "MapsDirectionsGooglePlaces" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+			);
+			mainGroup = C91B5EE6C03D882E78E57FE0;
+			productRefGroup = C91B54B2B9ACFCBFED68813D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C91B5F430A11F4F5D930D89C /* MapsDirectionsGooglePlaces */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C91B50A781C26A15BB3C9419 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C91B557ABF60AB35093FF2C2 /* Assets.xcassets in Resources */,
+				C91B5D07FA70EBF5F8CE5595 /* Preview Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C91B55F743A27E60BED5CA0E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C91B55DAA2A350B2D99AC0CB /* MapsDirectionsGooglePlacesApp.swift in Sources */,
+				C91B5301F3F3BA054275CA7B /* ContentView.swift in Sources */,
+				C91B53AFF855FBD29619F661 /* GIStack.swift in Sources */,
+				C91B59238CA95A19BA8A2978 /* GIListCell.swift in Sources */,
+				C91B58ACE3B8623998BD5DDB /* UIView+layer.swift in Sources */,
+				C91B52CC45278A6EB57F6A89 /* UIView+layout.swift in Sources */,
+				C91B5C3AF51BCA78EE5E73EA /* CGRect+convenience.swift in Sources */,
+				C91B524A9501AD7B30690C4B /* CGSize+constructor.swift in Sources */,
+				C91B5D6E5003624050B15539 /* UIColor+constructor.swift in Sources */,
+				C91B5E62203359EFB0AEDBDB /* UILabel+constructor.swift in Sources */,
+				C91B561AA250E24BD73CADAD /* UIStackView+padding.swift in Sources */,
+				C91B5F28CCA2039F6B77A15B /* UIButton+constructor.swift in Sources */,
+				C91B57BA84AE09930D00BBFA /* UIButton+convenience.swift in Sources */,
+				C91B59F8E1E28B6B7B5D0A98 /* UIView+oneSideBorder.swift in Sources */,
+				C91B54524CF19EC30672C3EA /* UIImageView+constructor.swift in Sources */,
+				C91B5A617EC6C72E231366C2 /* UIEdgeInsets+constructor.swift in Sources */,
+				C91B5201EEAEEECC570817BF /* UIViewController+navInTabBar.swift in Sources */,
+				C91B5AD887C3D9BEE7E20AE3 /* GIListController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C91B56D0437B66573C923E5C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "\"-Xlinker -interposable\"";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C91B5C9A5D917CE7F6972507 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "\"-Xlinker -interposable\"";
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C91B5D39487B8BF2EBF5966D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				DEVELOPMENT_ASSET_PATHS = "\"MapsDirectionsGooglePlaces/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = MapsDirectionsGooglePlaces/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = JustDoIt.Lkies.Hates.MapsDirectionsGooglePlaces;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C91B5F66699B5AC878DAD5E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				DEVELOPMENT_ASSET_PATHS = "\"MapsDirectionsGooglePlaces/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = MapsDirectionsGooglePlaces/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = JustDoIt.Lkies.Hates.MapsDirectionsGooglePlaces;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C91B5334E0773FA8EF6C33F6 /* Build configuration list for PBXNativeTarget "MapsDirectionsGooglePlaces" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C91B5D39487B8BF2EBF5966D /* Debug */,
+				C91B5F66699B5AC878DAD5E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C91B563E7F5FD6B9754A4A24 /* Build configuration list for PBXProject "MapsDirectionsGooglePlaces" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C91B56D0437B66573C923E5C /* Debug */,
+				C91B5C9A5D917CE7F6972507 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C91B536ACA20FFDDE521D877 /* Project object */;
+}
