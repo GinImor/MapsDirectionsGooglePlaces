@@ -11,7 +11,7 @@
 		C91B524A9501AD7B30690C4B /* CGSize+constructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B5AA7DE335FC696D32F6F /* CGSize+constructor.swift */; };
 		C91B52C313CA67DA6D00EE41 /* UITextField+constructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B5AFE4DF54CA268C76E61 /* UITextField+constructor.swift */; };
 		C91B52CC45278A6EB57F6A89 /* UIView+layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B56FAF2CD78833227C860 /* UIView+layout.swift */; };
-		C91B5301F3F3BA054275CA7B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B5A7090BAB66A9BF375BF /* ContentView.swift */; };
+		C91B5301F3F3BA054275CA7B /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B5A7090BAB66A9BF375BF /* MainView.swift */; };
 		C91B53AFF855FBD29619F661 /* GIStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B5700538C24D660E89E68 /* GIStack.swift */; };
 		C91B54524CF19EC30672C3EA /* UIImageView+constructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B5CB793F27ADEFB32A9DB /* UIImageView+constructor.swift */; };
 		C91B557ABF60AB35093FF2C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C91B524E75FE505B42CC8C1A /* Assets.xcassets */; };
@@ -50,7 +50,7 @@
 		C91B5865331C60C2D4C58E81 /* UIColor+constructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+constructor.swift"; sourceTree = "<group>"; };
 		C91B5946C1AE2978B1CB3098 /* GIListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIListController.swift; sourceTree = "<group>"; };
 		C91B5A1DFF872EF836A7CCD0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		C91B5A7090BAB66A9BF375BF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C91B5A7090BAB66A9BF375BF /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C91B5AA7DE335FC696D32F6F /* CGSize+constructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGSize+constructor.swift"; sourceTree = "<group>"; };
 		C91B5AD3B432D4D3F9A71081 /* MapsDirectionsGooglePlacesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsDirectionsGooglePlacesApp.swift; sourceTree = "<group>"; };
 		C91B5AEB10F6FA9F27D0F53D /* UIStackView+padding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+padding.swift"; sourceTree = "<group>"; };
@@ -60,6 +60,8 @@
 		C91B5CB793F27ADEFB32A9DB /* UIImageView+constructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+constructor.swift"; sourceTree = "<group>"; };
 		C91B5D5EBA167CD1EA2BD090 /* UIView+oneSideBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+oneSideBorder.swift"; sourceTree = "<group>"; };
 		C91B5D6604F43E4826793015 /* MapsDirectionsGooglePlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapsDirectionsGooglePlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC8EB5E32643ED1200069014 /* BeiJing.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = BeiJing.gpx; path = ../BeiJing.gpx; sourceTree = "<group>"; };
+		DC8EB5E42643ED1200069014 /* ShangHai.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ShangHai.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,15 +78,13 @@
 		C91B52555561DD81E8292DD3 /* MapsDirectionsGooglePlaces */ = {
 			isa = PBXGroup;
 			children = (
+				DC8EB5E626441D3B00069014 /* Main */,
 				C91B54BFA10DB2105480929B /* Info.plist */,
 				C91B524E75FE505B42CC8C1A /* Assets.xcassets */,
 				C91B531064386A80D2343145 /* Preview Content */,
 				C91B5AD3B432D4D3F9A71081 /* MapsDirectionsGooglePlacesApp.swift */,
-				C91B5A7090BAB66A9BF375BF /* ContentView.swift */,
 				C91B5D290EA239055EFC8E97 /* Utilities */,
 				C91B5BE8A5F0E78764E51164 /* Extensions */,
-				C91B5EF8E8113C2766CCFB69 /* Controllers */,
-				C91B5B930FDF58B3A5401105 /* Views */,
 			);
 			path = MapsDirectionsGooglePlaces;
 			sourceTree = "<group>";
@@ -103,14 +103,6 @@
 				C91B5D6604F43E4826793015 /* MapsDirectionsGooglePlaces.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		C91B5B930FDF58B3A5401105 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				C91B523BC91FF3EDD45ED700 /* LocationCarouselCell.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		C91B5BE8A5F0E78764E51164 /* Extensions */ = {
@@ -148,17 +140,29 @@
 		C91B5EE6C03D882E78E57FE0 = {
 			isa = PBXGroup;
 			children = (
+				DC8EB5E32643ED1200069014 /* BeiJing.gpx */,
+				DC8EB5E42643ED1200069014 /* ShangHai.gpx */,
 				C91B54B2B9ACFCBFED68813D /* Products */,
 				C91B52555561DD81E8292DD3 /* MapsDirectionsGooglePlaces */,
 			);
 			sourceTree = "<group>";
 		};
-		C91B5EF8E8113C2766CCFB69 /* Controllers */ = {
+		DC8EB5E626441D3B00069014 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				DC8EB5E726441D5400069014 /* Carousel */,
+				C91B5A7090BAB66A9BF375BF /* MainView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		DC8EB5E726441D5400069014 /* Carousel */ = {
+			isa = PBXGroup;
+			children = (
+				C91B523BC91FF3EDD45ED700 /* LocationCarouselCell.swift */,
 				C91B5B882B3DA4FDE35EFB4C /* LocationCarouselController.swift */,
 			);
-			path = Controllers;
+			path = Carousel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,7 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C91B55DAA2A350B2D99AC0CB /* MapsDirectionsGooglePlacesApp.swift in Sources */,
-				C91B5301F3F3BA054275CA7B /* ContentView.swift in Sources */,
+				C91B5301F3F3BA054275CA7B /* MainView.swift in Sources */,
 				C91B53AFF855FBD29619F661 /* GIStack.swift in Sources */,
 				C91B59238CA95A19BA8A2978 /* GIListCell.swift in Sources */,
 				C91B58ACE3B8623998BD5DDB /* UIView+layer.swift in Sources */,

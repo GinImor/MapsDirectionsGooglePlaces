@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 
 protocol LocationCarouselControllerDelegate: class {
-  func didSelectItem(_ mapItem: MKMapItem)
+  func carouselDidSelectItem(_ mapItem: MKMapItem)
 }
 
 class LocationCarouselController: GIListController<MKMapItem>, UICollectionViewDelegateFlowLayout {
@@ -33,7 +33,7 @@ class LocationCarouselController: GIListController<MKMapItem>, UICollectionViewD
   
   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-    delegate?.didSelectItem(items[indexPath.item])
+    delegate?.carouselDidSelectItem(items[indexPath.item])
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

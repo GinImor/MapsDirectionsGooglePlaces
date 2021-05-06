@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  MainController.swift
 //  MapsDirectionsGooglePlaces
 //
 //  Created by Gin Imor on 5/5/21.
@@ -10,15 +10,19 @@ import SwiftUI
 import MapKit
 import Combine
 
-extension MapController: LocationCarouselControllerDelegate {
+extension MainController: LocationCarouselControllerDelegate {
   
-  func didSelectItem(_ mapItem: MKMapItem) {
-    mapView.showAnnotations([mapItem.placemark], animated: true)
+  func carouselDidSelectItem(_ mapItem: MKMapItem) {
+    guard let selectingAnnotation = mapView.annotations.first(where: { (annotation) -> Bool in
+      guard let customAnnotation = annotation as? CustomPointerAnnotation else { return false}
+      return customAnnotation.mapItem?.name == mapItem.name
+    }) else { return }
+    mapView.showAnnotations([selectingAnnotation], animated: true)
   }
 }
 
 
-extension MapController: CLLocationManagerDelegate {
+extension MainController: CLLocationManagerDelegate {
   
   func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
     switch manager.authorizationStatus {
@@ -32,6 +36,7 @@ extension MapController: CLLocationManagerDelegate {
   
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     guard let firstLocation = locations.first else { return }
+    print("did update location")
     let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
     let userRegion = MKCoordinateRegion(center: firstLocation.coordinate, span: span)
     mapView.setRegion(userRegion, animated: true)
@@ -39,18 +44,30 @@ extension MapController: CLLocationManagerDelegate {
 }
 
 
-extension MapController: MKMapViewDelegate {
+extension MainController: MKMapViewDelegate {
   public func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
     // system create user annotation to show user position
-    guard annotation is MKPlacemark else { return nil }
+    guard annotation is MKPointAnnotation else { return nil }
     let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "annotationViewId")
     annotationView.canShowCallout = true
     return annotationView
   }
+  
+  func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+    guard let customAnnotation = view.annotation as? CustomPointerAnnotation,
+          let item = locationCarouselController.items.firstIndex(where: { mapItem in
+            mapItem.name == customAnnotation.mapItem?.name
+          }) else { return }
+    locationCarouselController.collectionView.scrollToItem(at: [0, item], at: .centeredHorizontally, animated: true)
+  }
 }
 
 
-class MapController: UIViewController {
+class CustomPointerAnnotation: MKPointAnnotation {
+  var mapItem: MKMapItem?
+}
+
+class MainController: UIViewController {
   
   private lazy var mapView = MKMapView(frame: view.bounds)
   
@@ -86,13 +103,22 @@ class MapController: UIViewController {
         return
       }
       guard let response = response else { return }
+      self.searchTextField.resignFirstResponder()
       self.mapView.removeAnnotations(self.mapView.annotations)
-      let annotations = response.mapItems.map { $0.placemark }
-      self.mapView.addAnnotations(annotations)
+      let annotations = response.mapItems.map { mapItem -> CustomPointerAnnotation in
+        let annotation = CustomPointerAnnotation()
+        annotation.title = "Location: \(mapItem.name ?? "")"
+        annotation.coordinate = mapItem.placemark.coordinate
+        annotation.mapItem = mapItem
+        return annotation
+      }
+      print("response mapitems", response.mapItems)
       self.locationCarouselController.setItems(response.mapItems)
+      self.mapView.addAnnotations(annotations)
       self.mapView.showAnnotations(annotations, animated: true)
       if !annotations.isEmpty {
-        self.locationCarouselController.collectionView.scrollToItem(at: [0, 0], at: .centeredHorizontally, animated: true)
+        self.locationCarouselController.collectionView
+          .scrollToItem(at: [0, 0], at: .centeredHorizontally, animated: true)
       }
     }
   }
@@ -164,29 +190,23 @@ class MapController: UIViewController {
 }
 
 
-struct AppView: UIViewControllerRepresentable {
-  func makeUIViewController(context: Context) -> MapController {
-    return MapController()
+struct MainView: UIViewControllerRepresentable {
+  func makeUIViewController(context: Context) -> MainController {
+    return MainController()
   }
   
-  func updateUIViewController(_ uiViewController: MapController, context: Context) {
+  func updateUIViewController(_ uiViewController: MainController, context: Context) {
   }
   
-  typealias UIViewControllerType = MapController
+  typealias UIViewControllerType = MainController
   
 }
 
 
-struct ContentView: View {
-  var body: some View {
-    Text("Hello World!")
-      .padding()
-  }
-}
 
-struct ContentView_Previews: PreviewProvider {
+struct MainView_Previews: PreviewProvider {
   static var previews: some View {
-    AppView().ignoresSafeArea()
+    MainView().ignoresSafeArea()
   }
   
 }
