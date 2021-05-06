@@ -206,7 +206,7 @@ struct MainView: UIViewControllerRepresentable {
 
 struct MainView_Previews: PreviewProvider {
   static var previews: some View {
-    MainView().ignoresSafeArea()
+    MainView().edgesIgnoringSafeArea(.all)
   }
   
 }

@@ -31,6 +31,7 @@
 		C91B5E212DF60D7CFAE78815 /* MKMapItem+address.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B564BF38BAC907D620E44 /* MKMapItem+address.swift */; };
 		C91B5E62203359EFB0AEDBDB /* UILabel+constructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B52B04DE32B794A4C1C55 /* UILabel+constructor.swift */; };
 		C91B5F28CCA2039F6B77A15B /* UIButton+constructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B5572EFE693970C69B843 /* UIButton+constructor.swift */; };
+		DCBB52B526441FBF003539BF /* DirectionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBB52B426441FBF003539BF /* DirectionsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		C91B5D6604F43E4826793015 /* MapsDirectionsGooglePlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapsDirectionsGooglePlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC8EB5E32643ED1200069014 /* BeiJing.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = BeiJing.gpx; path = ../BeiJing.gpx; sourceTree = "<group>"; };
 		DC8EB5E42643ED1200069014 /* ShangHai.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ShangHai.gpx; sourceTree = "<group>"; };
+		DCBB52B426441FBF003539BF /* DirectionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 		C91B52555561DD81E8292DD3 /* MapsDirectionsGooglePlaces */ = {
 			isa = PBXGroup;
 			children = (
+				DCBB52B326441FAA003539BF /* Direction */,
 				DC8EB5E626441D3B00069014 /* Main */,
 				C91B54BFA10DB2105480929B /* Info.plist */,
 				C91B524E75FE505B42CC8C1A /* Assets.xcassets */,
@@ -165,6 +168,14 @@
 			path = Carousel;
 			sourceTree = "<group>";
 		};
+		DCBB52B326441FAA003539BF /* Direction */ = {
+			isa = PBXGroup;
+			children = (
+				DCBB52B426441FBF003539BF /* DirectionsController.swift */,
+			);
+			path = Direction;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -231,6 +242,7 @@
 			files = (
 				C91B55DAA2A350B2D99AC0CB /* MapsDirectionsGooglePlacesApp.swift in Sources */,
 				C91B5301F3F3BA054275CA7B /* MainView.swift in Sources */,
+				DCBB52B526441FBF003539BF /* DirectionsController.swift in Sources */,
 				C91B53AFF855FBD29619F661 /* GIStack.swift in Sources */,
 				C91B59238CA95A19BA8A2978 /* GIListCell.swift in Sources */,
 				C91B58ACE3B8623998BD5DDB /* UIView+layer.swift in Sources */,

@@ -21,7 +21,7 @@ struct MapsDirectionsGooglePlacesApp: App {
   @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
   var body: some Scene {
     WindowGroup {
-      MainView().ignoresSafeArea()
+      DirectionsView().edgesIgnoringSafeArea(.all)
     }
   }
 }
