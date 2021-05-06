@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C91B5201EEAEEECC570817BF /* UIViewController+navInTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B562C42338169CE355093 /* UIViewController+navInTabBar.swift */; };
 		C91B524A9501AD7B30690C4B /* CGSize+constructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B5AA7DE335FC696D32F6F /* CGSize+constructor.swift */; };
+		C91B52C313CA67DA6D00EE41 /* UITextField+constructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B5AFE4DF54CA268C76E61 /* UITextField+constructor.swift */; };
 		C91B52CC45278A6EB57F6A89 /* UIView+layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B56FAF2CD78833227C860 /* UIView+layout.swift */; };
 		C91B5301F3F3BA054275CA7B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B5A7090BAB66A9BF375BF /* ContentView.swift */; };
 		C91B53AFF855FBD29619F661 /* GIStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B5700538C24D660E89E68 /* GIStack.swift */; };
@@ -17,7 +18,9 @@
 		C91B55DAA2A350B2D99AC0CB /* MapsDirectionsGooglePlacesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B5AD3B432D4D3F9A71081 /* MapsDirectionsGooglePlacesApp.swift */; };
 		C91B561AA250E24BD73CADAD /* UIStackView+padding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B5AEB10F6FA9F27D0F53D /* UIStackView+padding.swift */; };
 		C91B57BA84AE09930D00BBFA /* UIButton+convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B570DF97B999235EB3F53 /* UIButton+convenience.swift */; };
+		C91B58973B40FD7432C06683 /* LocationCarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B523BC91FF3EDD45ED700 /* LocationCarouselCell.swift */; };
 		C91B58ACE3B8623998BD5DDB /* UIView+layer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B53E1F42DEE4C66510C06 /* UIView+layer.swift */; };
+		C91B58AE691AADAF25A0CEBD /* LocationCarouselController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B5B882B3DA4FDE35EFB4C /* LocationCarouselController.swift */; };
 		C91B59238CA95A19BA8A2978 /* GIListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B54FA1E63268FBB0EF972 /* GIListCell.swift */; };
 		C91B59F8E1E28B6B7B5D0A98 /* UIView+oneSideBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B5D5EBA167CD1EA2BD090 /* UIView+oneSideBorder.swift */; };
 		C91B5A617EC6C72E231366C2 /* UIEdgeInsets+constructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B5BE33E82649AD82CF3B4 /* UIEdgeInsets+constructor.swift */; };
@@ -25,12 +28,14 @@
 		C91B5C3AF51BCA78EE5E73EA /* CGRect+convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B51923087C049E498CF74 /* CGRect+convenience.swift */; };
 		C91B5D07FA70EBF5F8CE5595 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C91B5A1DFF872EF836A7CCD0 /* Preview Assets.xcassets */; };
 		C91B5D6E5003624050B15539 /* UIColor+constructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B5865331C60C2D4C58E81 /* UIColor+constructor.swift */; };
+		C91B5E212DF60D7CFAE78815 /* MKMapItem+address.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B564BF38BAC907D620E44 /* MKMapItem+address.swift */; };
 		C91B5E62203359EFB0AEDBDB /* UILabel+constructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B52B04DE32B794A4C1C55 /* UILabel+constructor.swift */; };
 		C91B5F28CCA2039F6B77A15B /* UIButton+constructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B5572EFE693970C69B843 /* UIButton+constructor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C91B51923087C049E498CF74 /* CGRect+convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+convenience.swift"; sourceTree = "<group>"; };
+		C91B523BC91FF3EDD45ED700 /* LocationCarouselCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCarouselCell.swift; sourceTree = "<group>"; };
 		C91B524E75FE505B42CC8C1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C91B52B04DE32B794A4C1C55 /* UILabel+constructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+constructor.swift"; sourceTree = "<group>"; };
 		C91B53E1F42DEE4C66510C06 /* UIView+layer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+layer.swift"; sourceTree = "<group>"; };
@@ -38,6 +43,7 @@
 		C91B54FA1E63268FBB0EF972 /* GIListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIListCell.swift; sourceTree = "<group>"; };
 		C91B5572EFE693970C69B843 /* UIButton+constructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+constructor.swift"; sourceTree = "<group>"; };
 		C91B562C42338169CE355093 /* UIViewController+navInTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+navInTabBar.swift"; sourceTree = "<group>"; };
+		C91B564BF38BAC907D620E44 /* MKMapItem+address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MKMapItem+address.swift"; sourceTree = "<group>"; };
 		C91B56FAF2CD78833227C860 /* UIView+layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+layout.swift"; sourceTree = "<group>"; };
 		C91B5700538C24D660E89E68 /* GIStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GIStack.swift; sourceTree = "<group>"; };
 		C91B570DF97B999235EB3F53 /* UIButton+convenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+convenience.swift"; sourceTree = "<group>"; };
@@ -48,6 +54,8 @@
 		C91B5AA7DE335FC696D32F6F /* CGSize+constructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGSize+constructor.swift"; sourceTree = "<group>"; };
 		C91B5AD3B432D4D3F9A71081 /* MapsDirectionsGooglePlacesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsDirectionsGooglePlacesApp.swift; sourceTree = "<group>"; };
 		C91B5AEB10F6FA9F27D0F53D /* UIStackView+padding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+padding.swift"; sourceTree = "<group>"; };
+		C91B5AFE4DF54CA268C76E61 /* UITextField+constructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+constructor.swift"; sourceTree = "<group>"; };
+		C91B5B882B3DA4FDE35EFB4C /* LocationCarouselController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCarouselController.swift; sourceTree = "<group>"; };
 		C91B5BE33E82649AD82CF3B4 /* UIEdgeInsets+constructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+constructor.swift"; sourceTree = "<group>"; };
 		C91B5CB793F27ADEFB32A9DB /* UIImageView+constructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+constructor.swift"; sourceTree = "<group>"; };
 		C91B5D5EBA167CD1EA2BD090 /* UIView+oneSideBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+oneSideBorder.swift"; sourceTree = "<group>"; };
@@ -74,6 +82,9 @@
 				C91B5AD3B432D4D3F9A71081 /* MapsDirectionsGooglePlacesApp.swift */,
 				C91B5A7090BAB66A9BF375BF /* ContentView.swift */,
 				C91B5D290EA239055EFC8E97 /* Utilities */,
+				C91B5BE8A5F0E78764E51164 /* Extensions */,
+				C91B5EF8E8113C2766CCFB69 /* Controllers */,
+				C91B5B930FDF58B3A5401105 /* Views */,
 			);
 			path = MapsDirectionsGooglePlaces;
 			sourceTree = "<group>";
@@ -92,6 +103,22 @@
 				C91B5D6604F43E4826793015 /* MapsDirectionsGooglePlaces.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C91B5B930FDF58B3A5401105 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C91B523BC91FF3EDD45ED700 /* LocationCarouselCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C91B5BE8A5F0E78764E51164 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C91B564BF38BAC907D620E44 /* MKMapItem+address.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		C91B5D290EA239055EFC8E97 /* Utilities */ = {
@@ -113,6 +140,7 @@
 				C91B5BE33E82649AD82CF3B4 /* UIEdgeInsets+constructor.swift */,
 				C91B562C42338169CE355093 /* UIViewController+navInTabBar.swift */,
 				C91B5946C1AE2978B1CB3098 /* GIListController.swift */,
+				C91B5AFE4DF54CA268C76E61 /* UITextField+constructor.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -123,6 +151,14 @@
 				C91B54B2B9ACFCBFED68813D /* Products */,
 				C91B52555561DD81E8292DD3 /* MapsDirectionsGooglePlaces */,
 			);
+			sourceTree = "<group>";
+		};
+		C91B5EF8E8113C2766CCFB69 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C91B5B882B3DA4FDE35EFB4C /* LocationCarouselController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +243,10 @@
 				C91B5A617EC6C72E231366C2 /* UIEdgeInsets+constructor.swift in Sources */,
 				C91B5201EEAEEECC570817BF /* UIViewController+navInTabBar.swift in Sources */,
 				C91B5AD887C3D9BEE7E20AE3 /* GIListController.swift in Sources */,
+				C91B52C313CA67DA6D00EE41 /* UITextField+constructor.swift in Sources */,
+				C91B5E212DF60D7CFAE78815 /* MKMapItem+address.swift in Sources */,
+				C91B58AE691AADAF25A0CEBD /* LocationCarouselController.swift in Sources */,
+				C91B58973B40FD7432C06683 /* LocationCarouselCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
