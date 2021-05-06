@@ -7,20 +7,18 @@
 //
 
 import UIKit
+import MapKit
 
-class LocationCarouselController: GIListController<UIColor>, UICollectionViewDelegateFlowLayout {
+protocol LocationCarouselControllerDelegate: class {
+  func didSelectItem(_ mapItem: MKMapItem)
+}
+
+class LocationCarouselController: GIListController<MKMapItem>, UICollectionViewDelegateFlowLayout {
   
-  override var ItemCellClass: GIListCell<UIColor>.Type? {
+  weak var delegate: LocationCarouselControllerDelegate?
+  
+  override var ItemCellClass: GIListCell<MKMapItem>.Type? {
     LocationCarouselCell.self
-  }
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    fetchData()
-  }
-  
-  private func fetchData() {
-    items = [.red, .blue, .brown]
   }
   
   override func setupViews() {
@@ -31,6 +29,11 @@ class LocationCarouselController: GIListController<UIColor>, UICollectionViewDel
   
   override func setupFlowLayout(_ flowLayout: UICollectionViewFlowLayout) {
     flowLayout.sectionInset = .init(vertical: 0, horizontal: 16)
+  }
+  
+  override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    delegate?.didSelectItem(items[indexPath.item])
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

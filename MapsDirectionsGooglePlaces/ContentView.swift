@@ -10,8 +10,39 @@ import SwiftUI
 import MapKit
 import Combine
 
+extension MapController: LocationCarouselControllerDelegate {
+  
+  func didSelectItem(_ mapItem: MKMapItem) {
+    mapView.showAnnotations([mapItem.placemark], animated: true)
+  }
+}
+
+
+extension MapController: CLLocationManagerDelegate {
+  
+  func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+    switch manager.authorizationStatus {
+    case .authorizedWhenInUse:
+      print("change to when in use")
+      // if get the permission, go get the user position
+      locationManager.startUpdatingLocation()
+    default: ()
+    }
+  }
+  
+  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    guard let firstLocation = locations.first else { return }
+    let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+    let userRegion = MKCoordinateRegion(center: firstLocation.coordinate, span: span)
+    mapView.setRegion(userRegion, animated: true)
+  }
+}
+
+
 extension MapController: MKMapViewDelegate {
   public func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    // system create user annotation to show user position
+    guard annotation is MKPlacemark else { return nil }
     let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "annotationViewId")
     annotationView.canShowCallout = true
     return annotationView
@@ -34,6 +65,14 @@ class MapController: UIViewController {
     super.viewDidLoad()
     setupViews()
     performLocalSearch()
+    requestUserAuthorization()
+  }
+  
+  let locationManager = CLLocationManager()
+  
+  private func requestUserAuthorization() {
+    locationManager.requestWhenInUseAuthorization()
+    locationManager.delegate = self
   }
   
   private func performLocalSearch() {
@@ -48,18 +87,13 @@ class MapController: UIViewController {
       }
       guard let response = response else { return }
       self.mapView.removeAnnotations(self.mapView.annotations)
-      
-      response.mapItems.forEach { mapItem in
-        let placemark = mapItem.placemark
-//        print("\(placemark.name ?? "")")
-        
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = placemark.coordinate
-        annotation.title = placemark.title
-        self.mapView.addAnnotation(annotation)
-//        print(mapItem.address)
+      let annotations = response.mapItems.map { $0.placemark }
+      self.mapView.addAnnotations(annotations)
+      self.locationCarouselController.setItems(response.mapItems)
+      self.mapView.showAnnotations(annotations, animated: true)
+      if !annotations.isEmpty {
+        self.locationCarouselController.collectionView.scrollToItem(at: [0, 0], at: .centeredHorizontally, animated: true)
       }
-      self.mapView.showAnnotations(self.mapView.annotations, animated: true)
     }
   }
   
@@ -69,9 +103,6 @@ class MapController: UIViewController {
     setupMapView()
     setupSearchView()
     setupLocationsCarousel()
-    view.subviews.forEach {
-      print("view subview", $0)
-    }
   }
   
   private func setupLocationsCarousel() {
@@ -79,6 +110,7 @@ class MapController: UIViewController {
     let carouselContainer = locationCarouselController.view!
     carouselContainer.add(to: view).hLining(.horizontal, to: view).vLining(.bottom).sizing(height: 150)
     locationCarouselController.didMove(toParent: self)
+    locationCarouselController.delegate = self
   }
   
   private func setupSearchView() {
@@ -109,6 +141,7 @@ class MapController: UIViewController {
   private func setupMapView() {
     view.addSubview(mapView)
     mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+    mapView.showsUserLocation = true
     mapView.delegate = self
     setupRegion()
 //    setupAnnotation()
