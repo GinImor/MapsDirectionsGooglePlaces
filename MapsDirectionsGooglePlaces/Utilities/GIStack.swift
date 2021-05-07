@@ -8,50 +8,56 @@
 
 import UIKit
 
-protocol GIStack {
-  var view: UIStackView { get }
-}
-
-extension GIStack {
+extension UIStackView {
   
-  func spacing(_ value: CGFloat = 8.0) -> GIStack {
-    view.spacing = value
+  func spacing(_ value: CGFloat = 8.0) -> Self {
+    spacing = value
     return self
   }
   
-  func distribution(_ value: UIStackView.Distribution) -> GIStack {
-    view.distribution = value
+  func distributing(_ value: UIStackView.Distribution) -> Self {
+    distribution = value
     return self
   }
   
-  func aliment(_ value: UIStackView.Alignment) -> GIStack {
-    view.alignment = value
+  func aligning(_ value: UIStackView.Alignment) -> Self {
+    alignment = value
     return self
   }
 }
 
-struct GIHStack: GIStack {
-  let view: UIStackView
+class GIStack: UIStackView {
   
-  init(_ views: UIView...) {
-    view = UIStackView(arrangedSubviews: views)
+  private override init(frame: CGRect) {
+    super.init(frame: .zero)
   }
   
-  init(_ views: [UIView]) {
-    view = UIStackView(arrangedSubviews: views)
+  required init(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
 }
 
-struct GIVStack: GIStack {
-  let view: UIStackView
-  
-  init(_ views: UIView...) {
-    view = UIStackView(arrangedSubviews: views)
-    view.axis = .vertical
+class GIHStack: GIStack {
+
+  convenience init(_ views: UIView...) {
+    self.init(arrangedSubviews: views)
   }
   
-  init(_ views: [UIView]) {
-    view = UIStackView(arrangedSubviews: views)
-    view.axis = .vertical
+  convenience init(_ views: [UIView]) {
+    self.init(arrangedSubviews: views)
   }
 }
+
+class GIVStack: GIStack {
+  
+  convenience init(_ views: UIView...) {
+    self.init(arrangedSubviews: views)
+    axis = .vertical
+  }
+  
+  convenience init(_ views: [UIView]) {
+    self.init(arrangedSubviews: views)
+    axis = .vertical
+  }
+}
+

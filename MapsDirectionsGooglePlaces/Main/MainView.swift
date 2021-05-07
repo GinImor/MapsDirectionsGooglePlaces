@@ -141,7 +141,7 @@ class MainController: UIViewController {
   
   private func setupSearchView() {
     let searchBackgroundView = UIView(backgroundColor: .white)
-    GIHStack(searchTextField, donButton).spacing().view.add(to: searchBackgroundView).filling(edgeInsets: .init(8))
+    GIHStack(searchTextField, donButton).spacing().add(to: searchBackgroundView).filling(edgeInsets: .init(8))
     searchBackgroundView.add(to: view).hLining(.horizontal, value: 16).vLining(.top, value: 16)
     
     // need to obtain the listener

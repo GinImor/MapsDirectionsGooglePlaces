@@ -74,20 +74,20 @@ extension UIView {
   }
   
   @discardableResult
-  func withCH(_ CH: Float, CR: Float, axis: NSLayoutConstraint.Axis = .vertical) -> Self {
+  func withCH(_ CH: Float, CR: Float, axis: NSLayoutConstraint.Axis) -> Self {
     setContentHuggingPriority(UILayoutPriority(rawValue: CH), for: axis)
     setContentCompressionResistancePriority(UILayoutPriority(rawValue: CR), for: axis)
     return self
   }
   
   @discardableResult
-  func withCH(_ priority: Float, axis: NSLayoutConstraint.Axis = .vertical) -> Self {
+  func withCH(_ priority: Float, axis: NSLayoutConstraint.Axis) -> Self {
     setContentHuggingPriority(UILayoutPriority(rawValue: priority), for: axis)
     return self
   }
   
   @discardableResult
-  func withCR(_ priority: Float, axis: NSLayoutConstraint.Axis = .vertical) -> Self {
+  func withCR(_ priority: Float, axis: NSLayoutConstraint.Axis) -> Self {
     setContentCompressionResistancePriority(UILayoutPriority(rawValue: priority), for: axis)
     return self
   }

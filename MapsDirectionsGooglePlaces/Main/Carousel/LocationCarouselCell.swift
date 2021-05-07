@@ -20,8 +20,8 @@ class LocationCarouselCell: GIListCell<MKMapItem> {
     layer.cornerRadius = 8
     shadow(opacity: 1.0, radius: 4, offset: CGSize(width: 0.0, height: 1.0))
     
-    GIVStack(titleLabel, GIVStack(addressLabel, UIView()).view, coordinateLabel)
-      .spacing().view.add(to: self).filling(edgeInsets: .init(8))
+    GIVStack(titleLabel, GIVStack(addressLabel, UIView()), coordinateLabel)
+      .spacing().add(to: self).filling(edgeInsets: .init(8))
   }
   
   override func didSetItem() {
