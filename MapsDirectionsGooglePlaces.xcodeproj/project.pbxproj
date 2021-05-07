@@ -32,6 +32,7 @@
 		C91B5E62203359EFB0AEDBDB /* UILabel+constructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B52B04DE32B794A4C1C55 /* UILabel+constructor.swift */; };
 		C91B5F28CCA2039F6B77A15B /* UIButton+constructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B5572EFE693970C69B843 /* UIButton+constructor.swift */; };
 		DC5E20382644D98800F1B2CE /* IndentedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5E20372644D98800F1B2CE /* IndentedTextField.swift */; };
+		DC5E203B2645376300F1B2CE /* LocationSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5E203A2645376300F1B2CE /* LocationSearchController.swift */; };
 		DCBB52B526441FBF003539BF /* DirectionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBB52B426441FBF003539BF /* DirectionsController.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		C91B5D5EBA167CD1EA2BD090 /* UIView+oneSideBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+oneSideBorder.swift"; sourceTree = "<group>"; };
 		C91B5D6604F43E4826793015 /* MapsDirectionsGooglePlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapsDirectionsGooglePlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC5E20372644D98800F1B2CE /* IndentedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndentedTextField.swift; sourceTree = "<group>"; };
+		DC5E203A2645376300F1B2CE /* LocationSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchController.swift; sourceTree = "<group>"; };
 		DC8EB5E32643ED1200069014 /* BeiJing.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = BeiJing.gpx; path = ../BeiJing.gpx; sourceTree = "<group>"; };
 		DC8EB5E42643ED1200069014 /* ShangHai.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ShangHai.gpx; sourceTree = "<group>"; };
 		DCBB52B426441FBF003539BF /* DirectionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsController.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				DCBB52B426441FBF003539BF /* DirectionsController.swift */,
+				DC5E203A2645376300F1B2CE /* LocationSearchController.swift */,
 			);
 			path = Direction;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				C91B5C3AF51BCA78EE5E73EA /* CGRect+convenience.swift in Sources */,
 				C91B524A9501AD7B30690C4B /* CGSize+constructor.swift in Sources */,
 				C91B5D6E5003624050B15539 /* UIColor+constructor.swift in Sources */,
+				DC5E203B2645376300F1B2CE /* LocationSearchController.swift in Sources */,
 				C91B5E62203359EFB0AEDBDB /* UILabel+constructor.swift in Sources */,
 				C91B561AA250E24BD73CADAD /* UIStackView+padding.swift in Sources */,
 				C91B5F28CCA2039F6B77A15B /* UIButton+constructor.swift in Sources */,

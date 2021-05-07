@@ -12,9 +12,13 @@ class IndentedTextField: UITextField {
   
   let padding: CGFloat
   
-  init(padding: CGFloat) {
+  init(_ padding: CGFloat = 8, _ placeholder: String = "", _ textStyle: UIFont.TextStyle? = nil) {
     self.padding = padding
     super.init(frame: .zero)
+    self.placeholder = placeholder
+    if let textStyle = textStyle {
+      self.font = UIFont.preferredFont(forTextStyle: textStyle)
+    }
   }
   
   required init?(coder: NSCoder) {

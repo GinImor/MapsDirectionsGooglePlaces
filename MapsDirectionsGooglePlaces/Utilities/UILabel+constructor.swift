@@ -16,7 +16,7 @@ extension UILabel {
     return label
   }
   
-  static func new(_ text: String = "", _ textStyle: UIFont.TextStyle, _ lines: Int = 1) -> UILabel {
+  static func new(_ text: String, _ textStyle: UIFont.TextStyle, _ lines: Int = 1) -> UILabel {
     let label = UILabel()
     label.text = text
     label.font = UIFont.preferredFont(forTextStyle: textStyle)
@@ -24,7 +24,7 @@ extension UILabel {
     return label
   }
   
-  static func new(_ text: String = "", _ textStyle: UIFont.TextStyle, _ textColor: UIColor, _ textAlignment: NSTextAlignment
+  static func new(_ text: String, _ textStyle: UIFont.TextStyle, _ textColor: UIColor, _ textAlignment: NSTextAlignment
   ) -> UILabel {
     let label = UILabel()
     label.text = text

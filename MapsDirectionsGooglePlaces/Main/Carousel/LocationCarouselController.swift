@@ -28,7 +28,7 @@ class LocationCarouselController: GIListController<MKMapItem>, UICollectionViewD
   }
   
   override func setupFlowLayout(_ flowLayout: UICollectionViewFlowLayout) {
-    flowLayout.sectionInset = .init(vertical: 0, horizontal: 16)
+    flowLayout.sectionInset = .init(0, 16)
   }
   
   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

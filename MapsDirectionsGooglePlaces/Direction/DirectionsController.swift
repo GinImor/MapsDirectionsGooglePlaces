@@ -81,6 +81,7 @@ class DirectionsController: UIViewController, MKMapViewDelegate {
   private lazy var destinationTextField = navBarTextFiled(placeholder: "Destination")
   
   private func setupNavBar() {
+    navigationController?.navigationBar.isHidden = true
     navBar.add(to: view).hLining(.horizontal, to: view)
       .vLining(.top, to: view).vLining(.bottom, .top, value: 100)
     GIVStack(
@@ -91,8 +92,8 @@ class DirectionsController: UIViewController, MKMapViewDelegate {
         UIImageView.system(imageName: "mappin.circle", size: 22, tintColor: .white),
         destinationTextField.withCH(249, axis: .horizontal)).spacing()
     )
-    .distributing(.fillEqually).spacing().add(to: navBar)
-    .filling(edgeInsets: .init(top: 0, left: 16, bottom: 8, right: 16))
+    .distributing(.fillEqually).spacing()
+    .add(to: navBar).filling(edgeInsets: .init(0, 16, 8))
   }
   
   
@@ -104,13 +105,24 @@ class DirectionsController: UIViewController, MKMapViewDelegate {
   }
   
   private func navBarTextFiled(placeholder: String) -> IndentedTextField {
-    let textField = IndentedTextField(padding: 8)
+    let textField = IndentedTextField(8)
     textField.layer.cornerRadius = 8
     textField.textColor = .white
     textField.backgroundColor = UIColor(white: 1.0, alpha: 0.3)
+    textField.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
     let placeholderAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1.0, alpha: 0.7)]
     textField.attributedPlaceholder = .init(string: placeholder, attributes: placeholderAttributes)
     return textField
+  }
+  
+  @objc func handleTap(_ sender: UITapGestureRecognizer) {
+    if let tappedTextField = sender.view as? UITextField {
+      let locationSearchController = LocationSearchController()
+      locationSearchController.didSelectMapItem = { mapItem in
+        tappedTextField.text = mapItem.name
+      }
+      navigationController?.pushViewController(locationSearchController, animated: true)
+    }
   }
 
 }
@@ -118,11 +130,10 @@ class DirectionsController: UIViewController, MKMapViewDelegate {
 struct DirectionsView: UIViewControllerRepresentable {
   
   func makeUIViewController(context: Context) -> some UIViewController {
-    return DirectionsController()
+    return UINavigationController(rootViewController: DirectionsController())
   }
   
   func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-    
   }
 }
 

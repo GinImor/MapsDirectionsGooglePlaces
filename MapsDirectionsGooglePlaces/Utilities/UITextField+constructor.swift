@@ -10,8 +10,11 @@ import UIKit
 
 extension UITextField {
   
-  convenience init(placeholder: String) {
+  convenience init(_ placeholder: String, _ textStyle: UIFont.TextStyle? = nil) {
     self.init()
     self.placeholder = placeholder
+    if let textStyle = textStyle {
+      self.font = UIFont.preferredFont(forTextStyle: textStyle)
+    }
   }
 }

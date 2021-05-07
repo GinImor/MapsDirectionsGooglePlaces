@@ -71,7 +71,7 @@ class MainController: UIViewController {
   
   private lazy var mapView = MKMapView(frame: view.bounds)
   
-  private let searchTextField = UITextField(placeholder: "Enter to Search")
+  private let searchTextField = UITextField("Enter to Search")
   private let donButton = UIButton.system(text: "Done")
   
   private var textFieldListener: AnyCancellable?
