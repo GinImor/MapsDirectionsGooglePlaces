@@ -9,6 +9,7 @@
 import UIKit
 import SwiftUI
 import MapKit
+import JGProgressHUD
 
 class DirectionsController: UIViewController, MKMapViewDelegate {
   
@@ -18,22 +19,25 @@ class DirectionsController: UIViewController, MKMapViewDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     setupViews()
-    requestDirections()
   }
   
+  let routingHud: JGProgressHUD = {
+    let hud = JGProgressHUD(style: .dark)
+    hud.textLabel.text = "Routing"
+    return hud
+  }()
+  
   func requestDirections() {
-    let sourceCoordinate = CLLocationCoordinate2D(latitude: 31.224849, longitude: 121.493868)
-    let destinationCoordinate = CLLocationCoordinate2D(latitude: 31.213959, longitude: 121.430968)
-    let sourcePlacemark = MKPlacemark(coordinate: sourceCoordinate)
-    let destinationPlacemark = MKPlacemark(coordinate: destinationCoordinate)
-    let source = MKMapItem(placemark: sourcePlacemark)
-    let destination = MKMapItem(placemark: destinationPlacemark)
+    let source = sourceMapItem
+    let destination = destinationMapItem
     let request = MKDirections.Request()
     request.source = source
     request.destination = destination
     
+    routingHud.show(in: view)
     let directions = MKDirections(request: request)
     directions.calculate { (response, error) in
+      self.routingHud.dismiss()
       if let error = error {
         print("calculate routes error", error)
         return
@@ -54,7 +58,7 @@ class DirectionsController: UIViewController, MKMapViewDelegate {
     setupRegion()
     setupNavBar()
     setupMapView()
-    setupDummyAnnotations()
+//    setupDummyAnnotations()
   }
   
   func setupDummyAnnotations() {
@@ -115,14 +119,45 @@ class DirectionsController: UIViewController, MKMapViewDelegate {
     return textField
   }
   
+  private var sourceAnnotation: MKPointAnnotation!
+  private var destinationAnnotation: MKPointAnnotation!
+  private var sourceMapItem: MKMapItem!
+  private var destinationMapItem: MKMapItem!
+  
   @objc func handleTap(_ sender: UITapGestureRecognizer) {
     if let tappedTextField = sender.view as? UITextField {
       let locationSearchController = LocationSearchController()
-      locationSearchController.didSelectMapItem = { mapItem in
+      locationSearchController.didSelectMapItem = { [unowned self] mapItem in
         tappedTextField.text = mapItem.name
+        if tappedTextField === self.sourceTextField {
+          if sourceAnnotation == nil {
+            sourceAnnotation = MKPointAnnotation()
+            mapView.addAnnotation(sourceAnnotation)
+          }
+          self.sourceMapItem = mapItem
+          self.refreshAnnotation(self.sourceAnnotation, withItem: mapItem)
+        } else if tappedTextField === self.destinationTextField {
+          if destinationAnnotation == nil {
+            destinationAnnotation = MKPointAnnotation()
+            mapView.addAnnotation(destinationAnnotation)
+          }
+          self.destinationMapItem = mapItem
+          self.refreshAnnotation(self.destinationAnnotation, withItem: mapItem)
+        }
       }
-      navigationController?.pushViewController(locationSearchController, animated: true)
+    navigationController?.pushViewController(locationSearchController, animated: true)
     }
+  }
+
+  private func refreshAnnotation(_ annotation: MKPointAnnotation, withItem mapItem: MKMapItem) {
+    guard annotation.title != mapItem.name else { return }
+    mapView.removeOverlays(mapView.overlays)
+    annotation.coordinate = mapItem.placemark.coordinate
+    annotation.title = mapItem.name
+    if sourceAnnotation != nil && destinationAnnotation != nil {
+      requestDirections()
+    }
+    mapView.showAnnotations(mapView.annotations, animated: false)
   }
 
 }
