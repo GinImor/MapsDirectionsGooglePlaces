@@ -45,11 +45,8 @@ class LocationSearchController: GIListController<MKMapItem>, UICollectionViewDel
     setupListeners()
   }
   
-  override func viewDidDisappear(_ animated: Bool) {
-    super.viewDidDisappear(animated)
-    textFiledListener?.cancel()
-  }
-  
+  // no need to cancel the listener manually, cause when the controller
+  // deinit, the listener will cancel iteself before it deinit
   private var textFiledListener: AnyCancellable?
   
   private func setupListeners() {
