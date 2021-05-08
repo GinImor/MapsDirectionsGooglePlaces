@@ -19,6 +19,7 @@ class DirectionsController: UIViewController, MKMapViewDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     setupViews()
+    requestDirections()
   }
   
   let routingHud: JGProgressHUD = {
@@ -43,9 +44,12 @@ class DirectionsController: UIViewController, MKMapViewDelegate {
         return
       }
       guard let route = response?.routes.first else { return }
+      self.showingRoute = route
       self.mapView.addOverlay(route.polyline)
     }
   }
+  
+  private var showingRoute: MKRoute?
   
   func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
     let renderer = MKPolylineRenderer(overlay: overlay)
@@ -58,7 +62,22 @@ class DirectionsController: UIViewController, MKMapViewDelegate {
     setupRegion()
     setupNavBar()
     setupMapView()
-//    setupDummyAnnotations()
+    setupRouteButton()
+  }
+  
+  let routeButton = UIButton.system(text: "Route", tintColor: .black)
+  
+  func setupRouteButton() {
+    routeButton.backgroundColor = .white
+    routeButton.addTarget(self, action: #selector(showRoute))
+    routeButton.add(to: view).hLining(.horizontal, value: 16).vLining(.bottom, value: -16).sizing(height: 50)
+  }
+  
+  @objc func showRoute() {
+    guard let showingRoute = showingRoute else { return }
+    let routesController = RoutesController()
+    routesController.setItems(showingRoute.steps)
+    present(routesController, animated: true)
   }
   
   func setupDummyAnnotations() {
@@ -154,10 +173,10 @@ class DirectionsController: UIViewController, MKMapViewDelegate {
     mapView.removeOverlays(mapView.overlays)
     annotation.coordinate = mapItem.placemark.coordinate
     annotation.title = mapItem.name
+    mapView.showAnnotations(mapView.annotations, animated: true)
     if sourceAnnotation != nil && destinationAnnotation != nil {
       requestDirections()
     }
-    mapView.showAnnotations(mapView.annotations, animated: false)
   }
 
 }
