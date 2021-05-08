@@ -8,9 +8,13 @@
 
 import SwiftUI
 import UIKit
+import GooglePlaces
 
 class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    // paste API key below, unfortunatelly, in order to make the key work
+    // need billing account
+    GMSPlacesClient.provideAPIKey("")
     return true
   }
 }
@@ -21,7 +25,7 @@ struct MapsDirectionsGooglePlacesApp: App {
   @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
   var body: some Scene {
     WindowGroup {
-      DirectionsView().edgesIgnoringSafeArea(.all)
+      PlacesView().edgesIgnoringSafeArea(.all)
     }
   }
 }
