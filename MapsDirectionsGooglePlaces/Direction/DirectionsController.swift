@@ -19,7 +19,6 @@ class DirectionsController: UIViewController, MKMapViewDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     setupViews()
-    requestDirections()
   }
   
   let routingHud: JGProgressHUD = {
@@ -76,7 +75,7 @@ class DirectionsController: UIViewController, MKMapViewDelegate {
   @objc func showRoute() {
     guard let showingRoute = showingRoute else { return }
     let routesController = RoutesController()
-    routesController.setItems(showingRoute.steps)
+    routesController.route = showingRoute
     present(routesController, animated: true)
   }
   

@@ -34,6 +34,7 @@
 		DC18C72D264627C10056FDBB /* JGProgressHUD.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC18C72C264627C10056FDBB /* JGProgressHUD.xcframework */; };
 		DC18C72E264627C10056FDBB /* JGProgressHUD.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DC18C72C264627C10056FDBB /* JGProgressHUD.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DC18C731264636BB0056FDBB /* RoutesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18C730264636BB0056FDBB /* RoutesController.swift */; };
+		DC18C734264652460056FDBB /* RouteHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18C733264652460056FDBB /* RouteHeader.swift */; };
 		DC5E20382644D98800F1B2CE /* IndentedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5E20372644D98800F1B2CE /* IndentedTextField.swift */; };
 		DC5E203B2645376300F1B2CE /* LocationSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5E203A2645376300F1B2CE /* LocationSearchController.swift */; };
 		DCBB52B526441FBF003539BF /* DirectionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBB52B426441FBF003539BF /* DirectionsController.swift */; };
@@ -82,6 +83,7 @@
 		C91B5D6604F43E4826793015 /* MapsDirectionsGooglePlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapsDirectionsGooglePlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC18C72C264627C10056FDBB /* JGProgressHUD.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = JGProgressHUD.xcframework; path = Carthage/Build/JGProgressHUD.xcframework; sourceTree = "<group>"; };
 		DC18C730264636BB0056FDBB /* RoutesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesController.swift; sourceTree = "<group>"; };
+		DC18C733264652460056FDBB /* RouteHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteHeader.swift; sourceTree = "<group>"; };
 		DC5E20372644D98800F1B2CE /* IndentedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndentedTextField.swift; sourceTree = "<group>"; };
 		DC5E203A2645376300F1B2CE /* LocationSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchController.swift; sourceTree = "<group>"; };
 		DC8EB5E32643ED1200069014 /* BeiJing.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = BeiJing.gpx; path = ../BeiJing.gpx; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				DC18C730264636BB0056FDBB /* RoutesController.swift */,
+				DC18C733264652460056FDBB /* RouteHeader.swift */,
 			);
 			path = Route;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				C91B53AFF855FBD29619F661 /* GIStack.swift in Sources */,
 				C91B59238CA95A19BA8A2978 /* GIListCell.swift in Sources */,
 				C91B58ACE3B8623998BD5DDB /* UIView+layer.swift in Sources */,
+				DC18C734264652460056FDBB /* RouteHeader.swift in Sources */,
 				C91B52CC45278A6EB57F6A89 /* UIView+layout.swift in Sources */,
 				C91B5C3AF51BCA78EE5E73EA /* CGRect+convenience.swift in Sources */,
 				C91B524A9501AD7B30690C4B /* CGSize+constructor.swift in Sources */,
