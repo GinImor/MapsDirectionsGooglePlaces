@@ -8,6 +8,7 @@
 
 import SwiftUI
 import MapKit
+import Combine
 
 struct MapSwiftUIView: UIViewRepresentable {
   
@@ -39,6 +40,17 @@ struct MapSwiftUIView: UIViewRepresentable {
 class MapSearchingViewModel: ObservableObject {
   
   @Published var annotations = [MKAnnotation]()
+  @Published var searchTerm = ""
+  
+  var searchTermListener: AnyCancellable?
+  
+  init() {
+    searchTermListener = $searchTerm.debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+      .sink { [weak self] (searchQuery) in
+        self?.performSearch(query: searchQuery)
+      }
+  }
+
   
   fileprivate func performSearch(query: String) {
     // if request not specify region, then the local search
@@ -74,21 +86,10 @@ struct MapSearchingView: View {
       MapSwiftUIView(annotations: mapSearchingViewModel.annotations)
         .edgesIgnoringSafeArea(.all)
       HStack {
-        Button(action: {
-          mapSearchingViewModel.performSearch(query: "airports")
-        }, label: {
-          Text("Search for airports")
-        })
-        .padding()
-        .background(Color(.white))
-        Button(action: {
-          mapSearchingViewModel.annotations = []
-        }, label: {
-          Text("Clear annotations")
-        })
-        .padding()
-        .background(Color(.white))
-      }.shadow(radius: 2)
+        TextField("Search terms", text: $mapSearchingViewModel.searchTerm)
+          .padding()
+          .background(Color(.white))
+      }.padding(.horizontal)
     }
   }
   

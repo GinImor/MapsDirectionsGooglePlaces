@@ -14,7 +14,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // paste API key below, unfortunatelly, in order to make the key work
     // need billing account
-    GMSPlacesClient.provideAPIKey("")
+//    GMSPlacesClient.provideAPIKey("")
     return true
   }
 }
