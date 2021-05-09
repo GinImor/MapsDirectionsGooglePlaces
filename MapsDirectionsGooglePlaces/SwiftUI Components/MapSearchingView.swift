@@ -36,34 +36,13 @@ struct MapSwiftUIView: UIViewRepresentable {
   typealias UIViewType = MKMapView
 }
 
-struct MapSearchingView: View {
+class MapSearchingViewModel: ObservableObject {
   
-  @State var annotations = [MKAnnotation]()
+  @Published var annotations = [MKAnnotation]()
   
-  var body: some View {
-    ZStack(alignment: .top) {
-      MapSwiftUIView(annotations: annotations)
-        .edgesIgnoringSafeArea(.all)
-      HStack {
-        Button(action: {
-          performSearch(query: "airports")
-        }, label: {
-          Text("Search for airports")
-        })
-        .padding()
-        .background(Color(.white))
-        Button(action: {
-          annotations = []
-        }, label: {
-          Text("Clear annotations")
-        })
-        .padding()
-        .background(Color(.white))
-      }.shadow(radius: 2)
-    }
-  }
-  
-  private func performSearch(query: String) {
+  fileprivate func performSearch(query: String) {
+    // if request not specify region, then the local search
+    // will based on the network the user currently on
     let request = MKLocalSearch.Request()
     request.naturalLanguageQuery = query
     let localSearch = MKLocalSearch(request: request)
@@ -73,7 +52,7 @@ struct MapSearchingView: View {
         return
       }
       guard let response = response else { return }
-      annotations = response.mapItems.map { mapItem -> MKAnnotation in
+      self.annotations = response.mapItems.map { mapItem -> MKAnnotation in
         let annotation = MKPointAnnotation()
         annotation.title = mapItem.name
         annotation.coordinate = mapItem.placemark.coordinate
@@ -81,6 +60,38 @@ struct MapSearchingView: View {
       }
     }
   }
+  
+}
+
+struct MapSearchingView: View {
+  // once the ObservedObject publish something, the listeners will be
+  // notified, and update the relative views, in this case, the MapSwiftUIView
+  // the map view receive new annotations, trigger the updateUIView method
+  @ObservedObject var mapSearchingViewModel = MapSearchingViewModel()
+  
+  var body: some View {
+    ZStack(alignment: .top) {
+      MapSwiftUIView(annotations: mapSearchingViewModel.annotations)
+        .edgesIgnoringSafeArea(.all)
+      HStack {
+        Button(action: {
+          mapSearchingViewModel.performSearch(query: "airports")
+        }, label: {
+          Text("Search for airports")
+        })
+        .padding()
+        .background(Color(.white))
+        Button(action: {
+          mapSearchingViewModel.annotations = []
+        }, label: {
+          Text("Clear annotations")
+        })
+        .padding()
+        .background(Color(.white))
+      }.shadow(radius: 2)
+    }
+  }
+  
 }
 
 struct MapSearchingView_Previews: PreviewProvider {
