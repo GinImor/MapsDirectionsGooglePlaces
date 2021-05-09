@@ -54,6 +54,7 @@
 		DC18C757264692720056FDBB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC18C756264692720056FDBB /* UIKit.framework */; };
 		DC18C75A264693240056FDBB /* PlacesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18C759264693240056FDBB /* PlacesController.swift */; };
 		DC18C75C2646A47D0056FDBB /* GooglePlaces.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DC18C75B2646A47D0056FDBB /* GooglePlaces.bundle */; };
+		DC18C7602646D8040056FDBB /* MapSearchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18C75F2646D8040056FDBB /* MapSearchingView.swift */; };
 		DC5E20382644D98800F1B2CE /* IndentedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5E20372644D98800F1B2CE /* IndentedTextField.swift */; };
 		DC5E203B2645376300F1B2CE /* LocationSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5E203A2645376300F1B2CE /* LocationSearchController.swift */; };
 		DCBB52B526441FBF003539BF /* DirectionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBB52B426441FBF003539BF /* DirectionsController.swift */; };
@@ -122,6 +123,7 @@
 		DC18C756264692720056FDBB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DC18C759264693240056FDBB /* PlacesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesController.swift; sourceTree = "<group>"; };
 		DC18C75B2646A47D0056FDBB /* GooglePlaces.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = Carthage/Build/iOS/GooglePlaces.framework/Resources/GooglePlaces.bundle; sourceTree = "<group>"; };
+		DC18C75F2646D8040056FDBB /* MapSearchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchingView.swift; sourceTree = "<group>"; };
 		DC5E20372644D98800F1B2CE /* IndentedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndentedTextField.swift; sourceTree = "<group>"; };
 		DC5E203A2645376300F1B2CE /* LocationSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchController.swift; sourceTree = "<group>"; };
 		DC8EB5E32643ED1200069014 /* BeiJing.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = BeiJing.gpx; path = ../BeiJing.gpx; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 		C91B52555561DD81E8292DD3 /* MapsDirectionsGooglePlaces */ = {
 			isa = PBXGroup;
 			children = (
+				DC18C75E2646D7C90056FDBB /* SwiftUI Components */,
 				DC18C758264693000056FDBB /* Place */,
 				DCBB52B326441FAA003539BF /* Direction */,
 				DC8EB5E626441D3B00069014 /* Main */,
@@ -277,6 +280,14 @@
 			path = Place;
 			sourceTree = "<group>";
 		};
+		DC18C75E2646D7C90056FDBB /* SwiftUI Components */ = {
+			isa = PBXGroup;
+			children = (
+				DC18C75F2646D8040056FDBB /* MapSearchingView.swift */,
+			);
+			path = "SwiftUI Components";
+			sourceTree = "<group>";
+		};
 		DC8EB5E626441D3B00069014 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -373,6 +384,7 @@
 			files = (
 				C91B55DAA2A350B2D99AC0CB /* MapsDirectionsGooglePlacesApp.swift in Sources */,
 				C91B5301F3F3BA054275CA7B /* MainView.swift in Sources */,
+				DC18C7602646D8040056FDBB /* MapSearchingView.swift in Sources */,
 				DCBB52B526441FBF003539BF /* DirectionsController.swift in Sources */,
 				C91B53AFF855FBD29619F661 /* GIStack.swift in Sources */,
 				C91B59238CA95A19BA8A2978 /* GIListCell.swift in Sources */,
