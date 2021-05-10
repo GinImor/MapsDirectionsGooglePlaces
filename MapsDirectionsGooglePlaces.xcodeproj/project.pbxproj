@@ -31,6 +31,7 @@
 		C91B5E212DF60D7CFAE78815 /* MKMapItem+address.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B564BF38BAC907D620E44 /* MKMapItem+address.swift */; };
 		C91B5E62203359EFB0AEDBDB /* UILabel+constructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B52B04DE32B794A4C1C55 /* UILabel+constructor.swift */; };
 		C91B5F28CCA2039F6B77A15B /* UIButton+constructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91B5572EFE693970C69B843 /* UIButton+constructor.swift */; };
+		DC0C468A26492FA100DCACFC /* DirectionsSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0C468926492FA100DCACFC /* DirectionsSearchView.swift */; };
 		DC18C72D264627C10056FDBB /* JGProgressHUD.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC18C72C264627C10056FDBB /* JGProgressHUD.xcframework */; };
 		DC18C72E264627C10056FDBB /* JGProgressHUD.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DC18C72C264627C10056FDBB /* JGProgressHUD.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DC18C731264636BB0056FDBB /* RoutesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18C730264636BB0056FDBB /* RoutesController.swift */; };
@@ -101,6 +102,7 @@
 		C91B5CB793F27ADEFB32A9DB /* UIImageView+constructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+constructor.swift"; sourceTree = "<group>"; };
 		C91B5D5EBA167CD1EA2BD090 /* UIView+oneSideBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+oneSideBorder.swift"; sourceTree = "<group>"; };
 		C91B5D6604F43E4826793015 /* MapsDirectionsGooglePlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapsDirectionsGooglePlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC0C468926492FA100DCACFC /* DirectionsSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsSearchView.swift; sourceTree = "<group>"; };
 		DC18C72C264627C10056FDBB /* JGProgressHUD.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = JGProgressHUD.xcframework; path = Carthage/Build/JGProgressHUD.xcframework; sourceTree = "<group>"; };
 		DC18C730264636BB0056FDBB /* RoutesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesController.swift; sourceTree = "<group>"; };
 		DC18C733264652460056FDBB /* RouteHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteHeader.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				DC18C75F2646D8040056FDBB /* MapSearchingView.swift */,
+				DC0C468926492FA100DCACFC /* DirectionsSearchView.swift */,
 			);
 			path = "SwiftUI Components";
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				C91B5201EEAEEECC570817BF /* UIViewController+navInTabBar.swift in Sources */,
 				C91B5AD887C3D9BEE7E20AE3 /* GIListController.swift in Sources */,
 				C91B52C313CA67DA6D00EE41 /* UITextField+constructor.swift in Sources */,
+				DC0C468A26492FA100DCACFC /* DirectionsSearchView.swift in Sources */,
 				C91B5E212DF60D7CFAE78815 /* MKMapItem+address.swift in Sources */,
 				C91B58AE691AADAF25A0CEBD /* LocationCarouselController.swift in Sources */,
 				C91B58973B40FD7432C06683 /* LocationCarouselCell.swift in Sources */,
