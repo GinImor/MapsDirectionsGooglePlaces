@@ -11,6 +11,9 @@ import MapKit
 import Combine
 
 struct MapSwiftUIView: UIViewRepresentable {
+  
+  static let regionDidChangeNotification = Notification.Name(rawValue: "regionDidChangeNotification")
+  
   func makeCoordinator() -> Coordinator {
     Coordinator(mapView: mapView)
   }
@@ -35,6 +38,10 @@ struct MapSwiftUIView: UIViewRepresentable {
       annotationView.canShowCallout = true
       return annotationView
     }
+    
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+      NotificationCenter.default.post(name: MapSwiftUIView.regionDidChangeNotification, object: mapView.region)
+    }
   }
   
   private func setupRegion() {
@@ -51,13 +58,13 @@ struct MapSwiftUIView: UIViewRepresentable {
   }
   
   func updateUIView(_ uiView: MKMapView, context: Context) {
-    if let currentUserCoordinate = currentUserCoordinate {
-      let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-      let region = MKCoordinateRegion(center: currentUserCoordinate, span: span)
-      uiView.setRegion(region, animated: true)
-    }
     if annotations.isEmpty {
       uiView.removeAnnotations(uiView.annotations)
+      if let currentUserCoordinate = currentUserCoordinate {
+        let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+        let region = MKCoordinateRegion(center: currentUserCoordinate, span: span)
+        uiView.setRegion(region, animated: true)
+      }
       return
     }
     var isRefreshing = false
@@ -95,6 +102,10 @@ class MapSearchingViewModel: NSObject, ObservableObject, CLLocationManagerDelega
   
   @Published var currentUserCoordinate: CLLocationCoordinate2D?
   
+  var regionObserver: NSObjectProtocol?
+  
+  var region: MKCoordinateRegion?
+  
   var searchTermListener: AnyCancellable?
   
   let locationManager = CLLocationManager()
@@ -107,6 +118,10 @@ class MapSearchingViewModel: NSObject, ObservableObject, CLLocationManagerDelega
       }
     locationManager.delegate = self
     locationManager.requestWhenInUseAuthorization()
+    
+    regionObserver = NotificationCenter.default.addObserver(forName: MapSwiftUIView.regionDidChangeNotification, object: nil, queue: .main) { [weak self] (notification) in
+      self?.region = notification.object as? MKCoordinateRegion
+    }
   }
   
   func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
@@ -124,6 +139,9 @@ class MapSearchingViewModel: NSObject, ObservableObject, CLLocationManagerDelega
     // will based on the network the user currently on
     let request = MKLocalSearch.Request()
     request.naturalLanguageQuery = query
+    if let region = region {
+      request.region = region
+    }
     let localSearch = MKLocalSearch(request: request)
     localSearch.start { (response, error) in
       if let error = error {
