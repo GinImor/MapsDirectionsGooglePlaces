@@ -11,11 +11,29 @@ import MapKit
 import Combine
 
 struct MapSwiftUIView: UIViewRepresentable {
+  func makeCoordinator() -> Coordinator {
+    Coordinator(mapView: mapView)
+  }
+  
   
   var annotations: [MKAnnotation]
   var selectedAnnotation: MKAnnotation?
 
   let mapView = MKMapView()
+  
+  class Coordinator: NSObject, MKMapViewDelegate {
+    
+    init(mapView: MKMapView) {
+      super.init()
+      mapView.delegate = self
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+      let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "annotionView")
+      annotationView.canShowCallout = true
+      return annotationView
+    }
+  }
   
   private func setupRegion() {
     let coordinate = CLLocationCoordinate2D(latitude: 36.232600, longitude: -115.024034)
