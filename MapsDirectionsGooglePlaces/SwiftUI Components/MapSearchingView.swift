@@ -15,11 +15,12 @@ struct MapSwiftUIView: UIViewRepresentable {
     Coordinator(mapView: mapView)
   }
   
-  
   var annotations: [MKAnnotation]
   var selectedAnnotation: MKAnnotation?
 
   let mapView = MKMapView()
+  
+  var currentUserCoordinate: CLLocationCoordinate2D?
   
   class Coordinator: NSObject, MKMapViewDelegate {
     
@@ -29,6 +30,7 @@ struct MapSwiftUIView: UIViewRepresentable {
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+      guard annotation is MKPointAnnotation else { return nil }
       let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "annotionView")
       annotationView.canShowCallout = true
       return annotationView
@@ -44,10 +46,16 @@ struct MapSwiftUIView: UIViewRepresentable {
   
   func makeUIView(context: Context) -> MKMapView {
     setupRegion()
+    mapView.showsUserLocation = true
     return mapView
   }
   
   func updateUIView(_ uiView: MKMapView, context: Context) {
+    if let currentUserCoordinate = currentUserCoordinate {
+      let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+      let region = MKCoordinateRegion(center: currentUserCoordinate, span: span)
+      uiView.setRegion(region, animated: true)
+    }
     if annotations.isEmpty {
       uiView.removeAnnotations(uiView.annotations)
       return
@@ -77,7 +85,7 @@ struct MapSwiftUIView: UIViewRepresentable {
   typealias UIViewType = MKMapView
 }
 
-class MapSearchingViewModel: ObservableObject {
+class MapSearchingViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
   
   @Published var annotations = [MKAnnotation]()
   @Published var searchTerm = ""
@@ -85,15 +93,31 @@ class MapSearchingViewModel: ObservableObject {
   
   @Published var selectedAnnotation: MKAnnotation?
   
+  @Published var currentUserCoordinate: CLLocationCoordinate2D?
+  
   var searchTermListener: AnyCancellable?
   
-  init() {
+  let locationManager = CLLocationManager()
+  
+  override init() {
+    super.init()
     searchTermListener = $searchTerm.debounce(for: .milliseconds(500), scheduler: RunLoop.main)
       .sink { [weak self] (searchQuery) in
         self?.performSearch(query: searchQuery)
       }
+    locationManager.delegate = self
+    locationManager.requestWhenInUseAuthorization()
+  }
+  
+  func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+    if manager.authorizationStatus == .authorizedWhenInUse {
+      manager.startUpdatingLocation()
+    }
   }
 
+  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    currentUserCoordinate = locations.first?.coordinate
+  }
   
   fileprivate func performSearch(query: String) {
     // if request not specify region, then the local search
@@ -127,7 +151,7 @@ struct MapSearchingView: View {
   
   var body: some View {
     ZStack(alignment: .top) {
-      MapSwiftUIView(annotations: mapSearchingViewModel.annotations, selectedAnnotation: mapSearchingViewModel.selectedAnnotation)
+      MapSwiftUIView(annotations: mapSearchingViewModel.annotations, selectedAnnotation: mapSearchingViewModel.selectedAnnotation, currentUserCoordinate: mapSearchingViewModel.currentUserCoordinate)
         .edgesIgnoringSafeArea(.all)
       VStack(spacing: 8) {
         HStack {
