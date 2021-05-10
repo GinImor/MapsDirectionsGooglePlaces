@@ -13,7 +13,8 @@ import Combine
 struct MapSwiftUIView: UIViewRepresentable {
   
   var annotations: [MKAnnotation]
-  
+  var selectedAnnotation: MKAnnotation?
+
   let mapView = MKMapView()
   
   private func setupRegion() {
@@ -29,9 +30,30 @@ struct MapSwiftUIView: UIViewRepresentable {
   }
   
   func updateUIView(_ uiView: MKMapView, context: Context) {
-    uiView.removeAnnotations(uiView.annotations)
-    uiView.addAnnotations(annotations)
-    uiView.showAnnotations(annotations, animated: true)
+    if annotations.isEmpty {
+      uiView.removeAnnotations(uiView.annotations)
+      return
+    }
+    var isRefreshing = false
+    if needRefreshAnnotations(uiView) {
+      isRefreshing = true
+      uiView.removeAnnotations(uiView.annotations)
+      uiView.addAnnotations(annotations)
+      uiView.showAnnotations(annotations, animated: true)
+    }
+    if !isRefreshing, let selectedAnnotation = selectedAnnotation {
+      uiView.selectAnnotation(selectedAnnotation, animated: true)
+    }
+  }
+  
+  private func needRefreshAnnotations(_ uiView: MKMapView) -> Bool {
+    let groupedAnnotations = Dictionary(grouping: uiView.annotations, by: { $0.title })
+    for annotation in annotations {
+      if groupedAnnotations[annotation.title] == nil {
+        return true
+      }
+    }
+    return false
   }
   
   typealias UIViewType = MKMapView
@@ -41,6 +63,9 @@ class MapSearchingViewModel: ObservableObject {
   
   @Published var annotations = [MKAnnotation]()
   @Published var searchTerm = ""
+  @Published var mapItems = [MKMapItem]()
+  
+  @Published var selectedAnnotation: MKAnnotation?
   
   var searchTermListener: AnyCancellable?
   
@@ -64,6 +89,7 @@ class MapSearchingViewModel: ObservableObject {
         return
       }
       guard let response = response else { return }
+      self.mapItems = response.mapItems
       self.annotations = response.mapItems.map { mapItem -> MKAnnotation in
         let annotation = MKPointAnnotation()
         annotation.title = mapItem.name
@@ -83,13 +109,34 @@ struct MapSearchingView: View {
   
   var body: some View {
     ZStack(alignment: .top) {
-      MapSwiftUIView(annotations: mapSearchingViewModel.annotations)
+      MapSwiftUIView(annotations: mapSearchingViewModel.annotations, selectedAnnotation: mapSearchingViewModel.selectedAnnotation)
         .edgesIgnoringSafeArea(.all)
-      HStack {
-        TextField("Search terms", text: $mapSearchingViewModel.searchTerm)
-          .padding()
-          .background(Color(.white))
-      }.padding(.horizontal)
+      VStack(spacing: 8) {
+        HStack {
+          TextField("Search terms", text: $mapSearchingViewModel.searchTerm)
+            .padding()
+            .background(Color(.white))
+        }.padding(.horizontal)
+        Spacer()
+        ScrollView(.horizontal) {
+          HStack {
+            ForEach(Array(zip(mapSearchingViewModel.annotations.indices, mapSearchingViewModel.annotations)), id: \.0) { (index, annotation) in
+              Button(action: {
+                mapSearchingViewModel.selectedAnnotation = mapSearchingViewModel.annotations[index]
+              }, label: {
+                VStack(alignment: .leading) {
+                  Text("\(mapSearchingViewModel.mapItems[index].name ?? "")").font(.headline)
+                  Text("\(mapSearchingViewModel.mapItems[index].placemark.title ?? "")")
+                }
+                .frame(width: 200)
+                .padding().background(Color(.white))
+                .cornerRadius(3.0)
+              })
+              .foregroundColor(.black)
+            }
+          }.padding(.horizontal)
+        }.shadow(radius: 5.0)
+      }
     }
   }
   
