@@ -132,6 +132,43 @@ struct SelectLocationView: View {
   }
 }
 
+struct MapItemView: View {
+  
+  @EnvironmentObject var env: DirectionsEnvironment
+  
+  var isSource: Bool
+  
+  var imageName: String {
+    isSource ? "record.circle" : "mappin.circle"
+  }
+  
+  var textTitle: String {
+    isSource ? env.sourceMapItem?.name ?? "Source" : env.destinationMapItem?.name ?? "Destination"
+  }
+  
+  var isSelectingSource: Binding<Bool> {
+    isSource ? $env.isSelectingSource : $env.isSelectingDestination
+  }
+  
+  var body: some View {
+    HStack(spacing: 16) {
+      Image(uiImage: UIImage(systemName: imageName)!
+              .withRenderingMode(.alwaysTemplate))
+        .foregroundColor(.white)
+      NavigationLink(
+        destination: SelectLocationView(),
+        isActive: isSelectingSource,
+        label: {
+          Text(textTitle)
+            .padding(12)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(Color(.white))
+            .cornerRadius(3)
+        })
+    }
+  }
+}
+
 struct DirectionsSearchView: View {
   
   @EnvironmentObject var env: DirectionsEnvironment
@@ -140,36 +177,8 @@ struct DirectionsSearchView: View {
     NavigationView {
       VStack(spacing: 0) {
         VStack(spacing: 16) {
-          HStack(spacing: 16) {
-            Image(uiImage: UIImage(systemName: "record.circle")!
-                    .withRenderingMode(.alwaysTemplate))
-              .foregroundColor(.white)
-            NavigationLink(
-              destination: SelectLocationView(),
-              isActive: $env.isSelectingSource,
-              label: {
-                Text(env.sourceMapItem?.name ?? "Source")
-                  .padding(12)
-                  .frame(maxWidth: .infinity, alignment: .leading)
-                  .background(Color(.white))
-                  .cornerRadius(3)
-              })
-          }
-          HStack(spacing: 16) {
-            Image(uiImage: UIImage(systemName: "mappin.circle")!
-                    .withRenderingMode(.alwaysTemplate))
-              .foregroundColor(.white)
-            NavigationLink(
-              destination: SelectLocationView(),
-              isActive: $env.isSelectingDestination,
-              label: {
-                Text(env.destinationMapItem?.name ?? "Destination")
-                  .padding(12)
-                  .frame(maxWidth: .infinity, alignment: .leading)
-                  .background(Color(.white))
-                  .cornerRadius(3)
-              })
-          }
+          MapItemView(isSource: true)
+          MapItemView(isSource: false)
         }
         .padding()
         .background(Color(.brown).edgesIgnoringSafeArea(.top))
