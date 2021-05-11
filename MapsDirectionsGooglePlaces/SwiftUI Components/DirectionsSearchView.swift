@@ -29,7 +29,7 @@ struct DirectionsMapView: UIViewRepresentable {
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
       let renderer = MKPolylineRenderer(overlay: overlay)
-      renderer.strokeColor = .red
+      renderer.strokeColor = .brown
       renderer.lineWidth = 5
       return renderer
     }
@@ -175,20 +175,56 @@ struct DirectionsSearchView: View {
   
   var body: some View {
     NavigationView {
-      VStack(spacing: 0) {
-        VStack(spacing: 16) {
-          MapItemView(isSource: true)
-          MapItemView(isSource: false)
+      ZStack {
+        VStack(spacing: 0) {
+          VStack(spacing: 16) {
+            MapItemView(isSource: true)
+            MapItemView(isSource: false)
+          }
+          .padding()
+          .background(Color(.brown).edgesIgnoringSafeArea(.top))
+          // here, mapView act as Spacer(), fill up the remaining space
+          DirectionsMapView()
+        }.edgesIgnoringSafeArea(.bottom)
+        // don't set it in navigation view
+        .navigationBarHidden(true)
+        
+        if env.isCalculatingDirections {
+          LoadingView()
         }
-        .padding()
-        .background(Color(.brown).edgesIgnoringSafeArea(.top))
-        DirectionsMapView()
-      }.edgesIgnoringSafeArea(.bottom)
-      // don't set it in navigation view
-      .navigationBarHidden(true)
+      }
     }
   }
   
+}
+
+struct LoadingView: View {
+  
+  var body: some View {
+    VStack {
+      LoadingSwiftUIHUB()
+      Text("Loading...")
+        .foregroundColor(.white)
+    }
+    .padding()
+    .background(Color(.black))
+    .cornerRadius(5)
+  }
+}
+
+struct LoadingSwiftUIHUB: UIViewRepresentable {
+  
+  func makeUIView(context: Context) -> UIActivityIndicatorView {
+    let indicator = UIActivityIndicatorView(style: .large)
+    indicator.color = .white
+    indicator.startAnimating()
+    return indicator
+  }
+  
+  func updateUIView(_ uiView: UIActivityIndicatorView, context: Context) {
+  }
+
+  typealias UIViewType = UIActivityIndicatorView
 }
 
 class DirectionsEnvironment: ObservableObject {
@@ -198,18 +234,21 @@ class DirectionsEnvironment: ObservableObject {
   @Published var destinationMapItem: MKMapItem?
   
   @Published var route: MKRoute?
+  @Published var isCalculatingDirections = false
   
   var mapItemListener: AnyCancellable?
   
   init() {
     // listen for the new value of mapItems, calculate the route if necessary
     // DirectionsMapView responsable for drawing the mapItems and route
-    mapItemListener = Publishers.CombineLatest($sourceMapItem, $destinationMapItem).sink { (output) in
+    mapItemListener = Publishers.CombineLatest($sourceMapItem, $destinationMapItem).sink { [weak self] (output) in
       let request = MKDirections.Request()
       request.source = output.0
       request.destination = output.1
       let directions = MKDirections(request: request)
+      self?.isCalculatingDirections = true
       directions.calculate { [weak self] (response, error) in
+        self?.isCalculatingDirections = false
         if let error = error {
           print("calculate directions error", error)
           return
