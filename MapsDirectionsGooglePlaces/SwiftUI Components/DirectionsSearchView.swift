@@ -24,7 +24,8 @@ struct DirectionsMapView: UIViewRepresentable {
 
 struct SelectLocationView: View {
   
-  @Binding var isSelectingSource: Bool
+  @EnvironmentObject var env: DirectionsEnvironment
+  
   @State var mapItems = [MKMapItem]()
   @State var searchQuery = ""
   
@@ -34,7 +35,8 @@ struct SelectLocationView: View {
       
       HStack {
         Button(action: {
-          isSelectingSource = false
+          env.isSelectingSource = false
+          env.isSelectingDestination = false
         }, label: {
           Image(uiImage: UIImage(systemName: "arrow.left")!)
         })
@@ -61,14 +63,25 @@ struct SelectLocationView: View {
       
       ScrollView {
         ForEach(mapItems, id: \.self) { mapItem in
-          HStack {
-            VStack(alignment: .leading, spacing: 8) {
-              Text(mapItem.name ?? "").font(.headline)
-              Text(mapItem.address)
+          Button(action: {
+            if env.isSelectingSource {
+              env.sourceMapItem = mapItem
+              env.isSelectingSource = false
+            } else if env.isSelectingDestination {
+              env.destinationMapItem = mapItem
+              env.isSelectingDestination = false
             }
-            Spacer()
-          }
-          .padding(.vertical, 8)
+          }, label: {
+            HStack {
+              VStack(alignment: .leading, spacing: 8) {
+                Text(mapItem.name ?? "").font(.headline)
+                Text(mapItem.address)
+              }
+              Spacer()
+            }
+            .padding(.vertical, 8)
+          })
+          .foregroundColor(.black)
         }
       }
       
@@ -80,7 +93,7 @@ struct SelectLocationView: View {
 
 struct DirectionsSearchView: View {
   
-  @State var isSelectingSource: Bool = false
+  @EnvironmentObject var env: DirectionsEnvironment
   
   var body: some View {
     NavigationView {
@@ -91,10 +104,10 @@ struct DirectionsSearchView: View {
                     .withRenderingMode(.alwaysTemplate))
               .foregroundColor(.white)
             NavigationLink(
-              destination: SelectLocationView(isSelectingSource: $isSelectingSource),
-              isActive: $isSelectingSource,
+              destination: SelectLocationView(),
+              isActive: $env.isSelectingSource,
               label: {
-                Text("Resource")
+                Text(env.sourceMapItem?.name ?? "Source")
                   .padding(12)
                   .frame(maxWidth: .infinity, alignment: .leading)
                   .background(Color(.white))
@@ -105,11 +118,16 @@ struct DirectionsSearchView: View {
             Image(uiImage: UIImage(systemName: "mappin.circle")!
                     .withRenderingMode(.alwaysTemplate))
               .foregroundColor(.white)
-            Text("Destination")
-              .padding(12)
-              .frame(maxWidth: .infinity, alignment: .leading)
-              .background(Color(.white))
-              .cornerRadius(3)
+            NavigationLink(
+              destination: SelectLocationView(),
+              isActive: $env.isSelectingDestination,
+              label: {
+                Text(env.destinationMapItem?.name ?? "Destination")
+                  .padding(12)
+                  .frame(maxWidth: .infinity, alignment: .leading)
+                  .background(Color(.white))
+                  .cornerRadius(3)
+              })
           }
         }
         .padding()
@@ -123,8 +141,17 @@ struct DirectionsSearchView: View {
   
 }
 
+class DirectionsEnvironment: ObservableObject {
+  @Published var isSelectingSource = false
+  @Published var isSelectingDestination = false
+  @Published var sourceMapItem: MKMapItem?
+  @Published var destinationMapItem: MKMapItem?
+}
+
 struct DirectionsSearchView_Previews: PreviewProvider {
+  static var env = DirectionsEnvironment()
+  
   static var previews: some View {
-    DirectionsSearchView()
+    DirectionsSearchView().environmentObject(env)
   }
 }
