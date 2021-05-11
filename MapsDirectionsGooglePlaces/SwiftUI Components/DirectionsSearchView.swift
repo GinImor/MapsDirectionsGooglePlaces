@@ -8,14 +8,55 @@
 
 import SwiftUI
 import MapKit
+import Combine
 
 struct DirectionsMapView: UIViewRepresentable {
+
+  @EnvironmentObject var env: DirectionsEnvironment
+  
+  let mapView = MKMapView()
+
+  func makeCoordinator() -> Coordinator {
+    Coordinator(mapView: mapView)
+  }
+  
+  class Coordinator: NSObject, MKMapViewDelegate {
+    
+    init(mapView: MKMapView) {
+      super.init()
+      mapView.delegate = self
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+      let renderer = MKPolylineRenderer(overlay: overlay)
+      renderer.strokeColor = .red
+      renderer.lineWidth = 5
+      return renderer
+    }
+  }
+  
   func makeUIView(context: Context) -> MKMapView {
-    MKMapView()
+    return mapView
   }
   
   func updateUIView(_ uiView: MKMapView, context: Context) {
+    // remember, every time env publish, this method will be called
+    uiView.removeOverlays(uiView.overlays)
+    uiView.removeAnnotations(uiView.annotations)
     
+    let annotations = [env.sourceMapItem, env.destinationMapItem]
+      .compactMap{$0}.map { mapItem -> MKAnnotation in
+      let annotation = MKPointAnnotation()
+      annotation.title = mapItem.name
+      annotation.coordinate = mapItem.placemark.coordinate
+      return annotation
+    }
+    uiView.addAnnotations(annotations)
+    uiView.showAnnotations(annotations, animated: false)
+    
+    if let route = env.route {
+      uiView.addOverlay(route.polyline)
+    }
   }
   
   typealias UIViewType = MKMapView
@@ -52,7 +93,7 @@ struct SelectLocationView: View {
                 let localSearch = MKLocalSearch(request: request)
                 localSearch.start { (response, error) in
                   if let error = error {
-                    print("local search error in SelecLocationView", error)
+                    print("local search error in SelectLocationView", error)
                     return
                   }
                   guard let response = response else { return }
@@ -146,6 +187,28 @@ class DirectionsEnvironment: ObservableObject {
   @Published var isSelectingDestination = false
   @Published var sourceMapItem: MKMapItem?
   @Published var destinationMapItem: MKMapItem?
+  
+  @Published var route: MKRoute?
+  
+  var mapItemListener: AnyCancellable?
+  
+  init() {
+    // listen for the new value of mapItems, calculate the route if necessary
+    // DirectionsMapView responsable for drawing the mapItems and route
+    mapItemListener = Publishers.CombineLatest($sourceMapItem, $destinationMapItem).sink { (output) in
+      let request = MKDirections.Request()
+      request.source = output.0
+      request.destination = output.1
+      let directions = MKDirections(request: request)
+      directions.calculate { [weak self] (response, error) in
+        if let error = error {
+          print("calculate directions error", error)
+          return
+        }
+        self?.route = response?.routes.first
+      }
+    }
+  }
 }
 
 struct DirectionsSearchView_Previews: PreviewProvider {
